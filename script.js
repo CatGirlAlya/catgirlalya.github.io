@@ -5,7 +5,7 @@ card.addEventListener('mousemove', (e) => {
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
-    const centerX = rect.width / 2.5
+    const centerX = rect.width / 2
     const centerY = rect.height / 2
 
     const rotateX = ((y - centerY) / centerY) * -10
