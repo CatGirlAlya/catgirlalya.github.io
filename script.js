@@ -1,41 +1,24 @@
-// Ensure this points to the external IP/domain your API is hosted on.
-// If testing locally on the same network, 127.0.0.1 or localhost works.
-const API_URL = "http://127.0.0.1:8080/api/me"; 
+const card = document.querySelector('.glass-card')
 
-async function loadProfile() {
-    try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
 
-        if (!data.error) {
-            // Set Avatar
-            const avatarImg = document.getElementById('nav-avatar');
-            avatarImg.src = data.avatar;
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
 
-            // Set Username
-            document.getElementById('nav-username').innerText = data.username;
+    const rotateX = ((y - centerY) / centerY) * -10
+    const rotateY = ((x - centerX) / centerX) * 10
 
-            // Set Status Glow
-            const dot = document.getElementById('status-indicator');
-            const statusColors = {
-                online: '#82ff9d',
-                idle: '#faa61a',
-                dnd: '#ff2e4d',
-                offline: '#747f8d'
-            };
-            
-            const color = statusColors[data.status] || statusColors.offline;
-            dot.style.backgroundColor = color;
-            dot.style.boxShadow = `0 0 12px ${color}`;
-        }
-    } catch (error) {
-        console.error("API link failed ✧", error);
-        document.getElementById('nav-username').innerText = "System Offline ✧";
-    }
-}
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+})
 
-// Fire on load
-loadProfile();
+card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)'
+    card.style.transition = 'transform 0.5s ease'
+})
 
-// Refreshes the profile dynamically every 30 seconds
-setInterval(loadProfile, 30000);
+card.addEventListener('mouseenter', () => {
+    card.style.transition = 'none'
+})
