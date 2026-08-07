@@ -202,3 +202,44 @@ p {
 .volume-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
 }
+
+.enter-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(13, 13, 13, 1);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+}
+
+.enter-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.audio-widget {
+    transition: all 0.3s ease;
+}
+
+.volume-slider {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.audio-widget:hover .volume-slider {
+    width: 80px;
+    opacity: 1;
+    pointer-events: auto;
+}
