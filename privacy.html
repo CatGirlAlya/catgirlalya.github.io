@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allium</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/htmx.org@2.0.0"></script>
 </head>
-<body>
+<body hx-boost="true">
     <div class="video-container">
         <video autoplay muted loop playsinline id="bg-video">
             <source src="banner.mp4" type="video/mp4">
@@ -47,9 +48,16 @@
             <footer class="legal-links">
                 <a href="tos.html">Terms of Service</a>
                 <a href="privacy.html">Privacy Policy</a>
-                <script src="script.js"></script>
             </footer>
         </div>
     </main>
+
+    <div id="audio-container" hx-preserve="true">
+        <audio id="bg-audio" src="music.mp3" loop></audio>
+        <button id="play-btn">Play</button>
+        <input type="range" id="vol-slider" min="0" max="1" step="0.01" value="0.2">
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
