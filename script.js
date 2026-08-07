@@ -29,12 +29,29 @@ if (!window.audioSetupComplete) {
     const audio = document.getElementById("bg-audio");
     const playBtn = document.getElementById("play-btn");
     const volSlider = document.getElementById("vol-slider");
+    const enterScreen = document.getElementById("enter-screen");
+    const iconSpeaker = document.getElementById("icon-speaker");
+    const iconMuted = document.getElementById("icon-muted");
 
     audio.volume = volSlider.value;
 
-    audio.play().catch(() => {
-        console.log("Browser policy blocked autoplay. Awaiting user interaction.");
-    });
+    function updateIcons() {
+        if (audio.paused || audio.volume === 0) {
+            iconSpeaker.style.display = "none";
+            iconMuted.style.display = "block";
+        } else {
+            iconSpeaker.style.display = "block";
+            iconMuted.style.display = "none";
+        }
+    }
+
+    if (enterScreen) {
+        enterScreen.addEventListener("click", () => {
+            enterScreen.classList.add("hidden");
+            audio.play().catch(() => {});
+            updateIcons();
+        });
+    }
 
     playBtn.addEventListener("click", () => {
         if (audio.paused) {
@@ -42,9 +59,14 @@ if (!window.audioSetupComplete) {
         } else {
             audio.pause();
         }
+        updateIcons();
     });
 
     volSlider.addEventListener("input", (event) => {
         audio.volume = event.target.value;
+        updateIcons();
     });
+
+    audio.addEventListener("play", updateIcons);
+    audio.addEventListener("pause", updateIcons);
 }
