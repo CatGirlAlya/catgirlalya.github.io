@@ -1,9 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allium</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+</head>
 <body hx-boost="true" hx-select=".content-wrapper" hx-target=".content-wrapper" hx-swap="outerHTML">
     <div id="enter-screen" class="enter-screen">
         <p>Click to Enter</p>
     </div>
 
-    <div class="video-container">
+    <div id="video-wrapper" class="video-container" hx-preserve="true">
         <video autoplay muted loop playsinline id="bg-video">
             <source src="banner.mp4" type="video/mp4">
         </video>
@@ -32,7 +41,7 @@
         </div>
     </main>
 
-    <div id="audio-container" class="audio-widget">
+    <div id="audio-container" class="audio-widget" hx-preserve="true">
         <audio id="bg-audio" src="music.mp3" loop></audio>
         <button id="play-btn" class="icon-btn">
             <svg id="icon-speaker" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -47,3 +56,4 @@
 
     <script src="script.js"></script>
 </body>
+</html>
