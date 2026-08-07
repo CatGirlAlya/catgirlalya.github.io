@@ -134,6 +134,11 @@ p {
     text-decoration: none;
     transition: color 0.2s ease;
 }
+
+.legal-links a:hover {
+    color: #ff3333;
+}
+
 .audio-widget {
     position: fixed;
     top: 20px;
@@ -196,8 +201,4 @@ p {
 
 .volume-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-}
-
-.legal-links a:hover {
-    color: #ff3333;
 }
