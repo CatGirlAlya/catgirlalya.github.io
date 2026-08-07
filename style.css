@@ -1,218 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
-    height: 100%;
-    background-color: #050505;
-    color: #fff;
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     overflow: hidden;
 }
 
-/* Background Video Setup */
-#bg-video {
+.video-container {
     position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    width: auto;
-    height: auto;
     z-index: -1;
-    object-fit: cover;
-    opacity: 0.35; /* Dims video so the UI glass pops */
+    background: rgba(0, 0, 0, 0.8);
 }
 
-/* Smooth Fade In Animation */
-.fade-in {
-    animation: fadeIn 1s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Layout Architecture */
-.layout {
-    display: flex;
-    height: 100vh;
-    padding: 2rem;
-    gap: 2rem;
-}
-
-/* Cyberpunk Glass Effect & Bubble Corners */
-.glass-panel, .glass-card {
-    background: rgba(10, 10, 14, 0.45);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 28px; 
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-/* Sidebar Components */
-.sidebar {
-    width: 320px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-}
-
-.avatar-container {
-    position: relative;
-}
-
-#nav-avatar {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(176, 38, 255, 0.3); /* Purple border */
-    transition: transform 0.3s ease;
-    background-color: #111;
-}
-
-#nav-avatar:hover {
-    transform: scale(1.05);
-}
-
-.status-dot {
+#bg-video {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #555;
-    border: 3px solid #0f0f13;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -2;
 }
 
-#nav-username {
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
+.video-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.7);
+    z-index: -1;
 }
 
-.divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.05);
-    margin: 2rem 0;
-}
-
-.about-me h3 {
-    color: #b026ff; 
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-}
-
-.about-me p {
-    color: #a0a0b0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-/* Main Content Components */
-.main-content {
-    flex: 1;
-    padding: 1rem;
-    overflow-y: auto;
-}
-
-.main-content header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    color: #fff;
-    letter-spacing: 1px;
+.content-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    z-index: 1;
 }
 
 .glass-card {
-    padding: 2rem;
-    max-width: 600px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.glass-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(176, 38, 255, 0.3);
-}
-
-.card-top {
+    background: rgba(15, 15, 15, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 51, 51, 0.15);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 1rem;
+    gap: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
 }
 
-.card-top h3 {
-    font-size: 1.5rem;
-    color: #b026ff;
+.profile-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid #ff3333;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
 }
 
-.bot-badge {
-    background: rgba(176, 38, 255, 0.15);
-    color: #b026ff;
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 800;
+.username {
+    color: #ff3333;
+    font-size: 26px;
     letter-spacing: 1px;
 }
 
-.bot-desc {
-    color: #a0a0b0;
+h2 {
+    font-size: 16px;
+    color: #ff3333;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 14px;
+    color: #bbbbbb;
     line-height: 1.6;
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
 }
 
-/* Button Styling */
-.actions {
-    display: flex;
-    gap: 1rem;
+.info-section {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-button {
-    padding: 14px 24px;
-    border-radius: 16px;
-    font-weight: 800;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border: none;
+.action-button {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 12px 30px;
+    background-color: #ff3333;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
     transition: all 0.2s ease;
-    letter-spacing: 0.5px;
 }
 
-.btn-solid {
-    background: #b026ff;
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(176, 38, 255, 0.25);
+.action-button:hover {
+    background-color: #e60000;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.6);
 }
 
-.btn-solid:hover {
-    background: #c354ff;
-    box-shadow: 0 4px 20px rgba(176, 38, 255, 0.4);
+.legal-links {
+    margin-top: 8px;
+    font-size: 13px;
+    display: flex;
+    gap: 20px;
 }
 
-.btn-outline {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+.legal-links a {
+    color: #777777;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-.btn-outline:hover {
-    background: rgba(255, 255, 255, 0.1);
+.legal-links a:hover {
+    color: #ff3333;
 }
