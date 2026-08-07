@@ -22,3 +22,27 @@ card.addEventListener('mouseleave', () => {
 card.addEventListener('mouseenter', () => {
     card.style.transition = 'none'
 })
+
+if (!window.audioSetupComplete) {
+    window.audioSetupComplete = true;
+
+    const audio = document.getElementById("bg-audio");
+    const playBtn = document.getElementById("play-btn");
+    const volSlider = document.getElementById("vol-slider");
+
+    audio.volume = volSlider.value;
+
+    playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.play();
+            playBtn.textContent = "Pause";
+        } else {
+            audio.pause();
+            playBtn.textContent = "Play";
+        }
+    });
+
+    volSlider.addEventListener("input", (event) => {
+        audio.volume = event.target.value;
+    });
+}
