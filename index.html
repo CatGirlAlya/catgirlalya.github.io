@@ -3,63 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network ✦ Overview</title>
+    <title>zipcat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Video -->
-    <video autoplay loop muted playsinline id="bg-video">
-        <source src="assets/banner.mp4" type="video/mp4">
-    </video>
-
-    <div class="layout fade-in">
-        <!-- Sidebar: Discord Live Profile & About Me -->
-        <div class="sidebar glass-panel">
-            <div class="profile-header">
-                <div class="avatar-container">
-                    <img id="nav-avatar" src="" alt="Avatar">
-                    <div id="status-indicator" class="status-dot"></div>
-                </div>
-                <h2 id="nav-username">Loading ✧</h2>
-            </div>
-            
-            <div class="divider"></div>
-
-            <!-- Custom Tailored About Me -->
-            <div class="about-me">
-                <h3>About Me ✦</h3>
-                <p>
-                    Developer focusing on Python, Lua, and building custom game modding systems for titles like Arma Reforger and Minecraft.
-                    <br><br>
-                    Also developing advanced Discord infrastructure, web layouts, and crafting electronic music in the Dariacore style on the side. 
-                    <br><br>
-                    Currently expanding the public bot network.
-                </p>
-            </div>
-        </div>
-
-        <!-- Main Content Area -->
-        <div class="main-content">
-            <header>
-                <h1>Public Network ✦</h1>
-            </header>
-
-            <div class="glass-card">
-                <div class="card-top">
-                    <h3>Roxy</h3>
-                    <span class="bot-badge">ACTIVE</span>
-                </div>
-                <p class="bot-desc">
-                    Custom Discord bot designed to expand the network. Features global channel locks, automated moderation tools, and strict AFK system infrastructure that requires exact commands to toggle off.
-                </p>
-                <div class="actions">
-                    <button class="btn-solid">ADD TO SERVER</button>
-                    <button class="btn-outline">ABOUT BOT</button>
-                </div>
-            </div>
-        </div>
+    <div class="video-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="banner.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <script src="script.js"></script>
+    <main class="content-wrapper">
+        <div class="glass-card">
+            <img src="pfp.png" alt="Profile Picture" class="profile-image">
+            <h1 class="username">zipcat</h1>
+
+            <section class="info-section">
+                <h2>About Me</h2>
+                <p>I build Discord utilities and custom software tools.</p>
+            </section>
+
+            <section class="info-section">
+                <h2>Allium Bot</h2>
+                <p>Add the bot to your server.</p>
+                <a href="YOUR_OAUTH2_LINK" class="action-button">Add to Discord</a>
+            </section>
+
+            <footer class="legal-links">
+                <a href="tos.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </footer>
+        </div>
+    </main>
 </body>
 </html>
