@@ -32,13 +32,15 @@ if (!window.audioSetupComplete) {
 
     audio.volume = volSlider.value;
 
+    audio.play().catch(() => {
+        console.log("Browser policy blocked autoplay. Awaiting user interaction.");
+    });
+
     playBtn.addEventListener("click", () => {
         if (audio.paused) {
             audio.play();
-            playBtn.textContent = "Pause";
         } else {
             audio.pause();
-            playBtn.textContent = "Play";
         }
     });
 
